@@ -1,0 +1,26 @@
+<mat-stepper [linear]="isLinear" #stepper>
+    <!-- Step 1: Category Description -->
+    <mat-step [stepControl]="categoryFormGroup">
+        <form [formGroup]="categoryFormGroup">
+            <ng-template matStepLabel>Category Description</ng-template>
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" placeholder="Enter Category Description" required></textarea>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext [disabled]="!categoryFormGroup.valid">Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <!-- Step 2: Confirm Save -->
+    <mat-step>
+        <ng-template matStepLabel>Confirm</ng-template>
+        <p>Click Save to confirm the category addition.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button color="primary" (click)="onSave()">Save</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-stepper>

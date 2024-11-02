@@ -1,0 +1,241 @@
+<!-- <div class="container ">
+    <h2 class="mb-4">Sign Up</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="first-name"><strong>First Name:</strong></label>
+            <input formControlName="firstName" type="text" class="form-control" id="first-name">
+            <div *ngIf="signupForm.get('firstName')?.invalid && (signupForm.get('firstName')?.touched || isSubmitted)" class="text-danger">
+                First Name is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="last-name"><strong>Last Name:</strong></label>
+            <input formControlName="lastName" type="text" class="form-control" id="last-name">
+            <div *ngIf="signupForm.get('lastName')?.invalid && (signupForm.get('lastName')?.touched || isSubmitted)" class="text-danger">
+                Last Name is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email"><strong>Email:</strong></label>
+            <input formControlName="email" type="email" class="form-control" id="email">
+            <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || isSubmitted)" class="text-danger">
+                A valid Email is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password"><strong>Password:</strong></label>
+            <input formControlName="password" type="password" class="form-control" id="password">
+            <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.touched || isSubmitted)" class="text-danger">
+                Password is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm-password"><strong>Confirm Password:</strong></label>
+            <input formControlName="confirmPassword" type="password" class="form-control" id="confirm-password">
+            <div *ngIf="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.touched || isSubmitted)" class="text-danger">
+                Must be same as Password.
+            </div>
+        </div>
+
+        <div formGroupName="address">
+            <div class="form-group">
+                <label for="house-no"><strong>House No:</strong></label>
+                <input formControlName="houseNo" type="text" class="form-control" id="house-no">
+                <div *ngIf="signupForm.get('address.houseNo')?.invalid && (signupForm.get('address.houseNo')?.touched || isSubmitted)" class="text-danger">
+                    House No is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="street"><strong>Street:</strong></label>
+                <input formControlName="street" type="text" class="form-control" id="street">
+                <div *ngIf="signupForm.get('address.street')?.invalid && (signupForm.get('address.street')?.touched || isSubmitted)" class="text-danger">
+                    Street is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="area"><strong>Area:</strong></label>
+                <input formControlName="area" type="text" class="form-control" id="area">
+                <div *ngIf="signupForm.get('address.area')?.invalid && (signupForm.get('address.area')?.touched || isSubmitted)" class="text-danger">
+                    Area is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="city"><strong>City:</strong></label>
+                <input formControlName="city" type="text" class="form-control" id="city">
+                <div *ngIf="signupForm.get('address.city')?.invalid && (signupForm.get('address.city')?.touched || isSubmitted)" class="text-danger">
+                    City is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="state"><strong>State:</strong></label>
+                <input formControlName="state" type="text" class="form-control" id="state">
+                <div *ngIf="signupForm.get('address.state')?.invalid && (signupForm.get('address.state')?.touched || isSubmitted)" class="text-danger">
+                    State is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="country"><strong>Country:</strong></label>
+                <input formControlName="country" type="text" class="form-control" id="country">
+                <div *ngIf="signupForm.get('address.country')?.invalid && (signupForm.get('address.country')?.touched || isSubmitted)" class="text-danger">
+                    Country is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="zip"><strong>Zip Code:</strong></label>
+                <input formControlName="zip" type="text" class="form-control" id="zip">
+                <div *ngIf="signupForm.get('address.zip')?.invalid && (signupForm.get('address.zip')?.touched || isSubmitted)" class="text-danger">
+                    Zip Code is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="mobile"><strong>Mobile:</strong></label>
+            <input formControlName="mobile" type="tel" class="form-control" id="mobile">
+            <div *ngIf="signupForm.get('mobile')?.invalid && (signupForm.get('mobile')?.touched || isSubmitted)" class="text-danger">
+                Mobile number is required.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div> -->
+<div class="container">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="first-name"><strong>First Name:</strong></label>
+                            <input formControlName="firstName" type="text" class="form-control" id="first-name">
+                            <div *ngIf="signupForm.get('firstName')?.invalid && (signupForm.get('firstName')?.touched || isSubmitted)" class="text-danger">
+                                First Name is required.
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="last-name"><strong>Last Name:</strong></label>
+                            <input formControlName="lastName" type="text" class="form-control" id="last-name">
+                            <div *ngIf="signupForm.get('lastName')?.invalid && (signupForm.get('lastName')?.touched || isSubmitted)" class="text-danger">
+                                Last Name is required.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="email"><strong>Email:</strong></label>
+                            <input formControlName="email" type="email" class="form-control" id="email">
+                            <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || isSubmitted)" class="text-danger">
+                                A valid Email is required.
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="password"><strong>Password:</strong></label>
+                            <input formControlName="password" type="password" class="form-control" id="password">
+                            <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.touched || isSubmitted)" class="text-danger">
+                                Password is required.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="confirm-password"><strong>Confirm Password:</strong></label>
+                            <input formControlName="confirmPassword" type="password" class="form-control" id="confirm-password">
+                            <div *ngIf="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.touched || isSubmitted)" class="text-danger">
+                                Must be same as Password.
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="street"><strong>Street:</strong></label>
+                            <input formControlName="street" type="text" class="form-control" id="street">
+                            <div *ngIf="signupForm.get('street')?.invalid && (signupForm.get('street')?.touched || isSubmitted)" class="text-danger">
+                                Street is required.
+                            </div>
+                        </div>
+                    </td> 
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="area"><strong>Area:</strong></label>
+                            <input formControlName="area" type="text" class="form-control" id="area">
+                            <div *ngIf="signupForm.get('area')?.invalid && (signupForm.get('area')?.touched || isSubmitted)" class="text-danger">
+                                Area is required.
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="city"><strong>City:</strong></label>
+                            <input formControlName="city" type="text" class="form-control" id="city">
+                            <div *ngIf="signupForm.get('city')?.invalid && (signupForm.get('city')?.touched || isSubmitted)" class="text-danger">
+                                City is required.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="state"><strong>State:</strong></label>
+                            <input formControlName="state" type="text" class="form-control" id="state">
+                            <div *ngIf="signupForm.get('state')?.invalid && (signupForm.get('state')?.touched || isSubmitted)" class="text-danger">
+                                State is required.
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="country"><strong>Country:</strong></label>
+                            <input formControlName="country" type="text" class="form-control" id="country">
+                            <div *ngIf="signupForm.get('country')?.invalid && (signupForm.get('country')?.touched || isSubmitted)" class="text-danger">
+                                Country is required.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="zip"><strong>Zip Code:</strong></label>
+                            <input formControlName="zip" type="text" class="form-control" id="zip">
+                            <div *ngIf="signupForm.get('zip')?.invalid && (signupForm.get('zip')?.touched || isSubmitted)" class="text-danger">
+                                Zip Code is required.
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="mobile"><strong>Mobile:</strong></label>
+                            <input formControlName="mobile" type="tel" class="form-control" id="mobile">
+                            <div *ngIf="signupForm.get('mobile')?.invalid && (signupForm.get('mobile')?.touched || isSubmitted)" class="text-danger">
+                                Mobile number is required.
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

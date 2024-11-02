@@ -1,0 +1,40 @@
+<mat-stepper [linear]="false">
+    <!-- Step 1: Select Admin -->
+    <mat-step label="Select Admin">
+      <form [formGroup]="adminForm">
+        <mat-form-field>
+          <mat-label>Select Admin ID</mat-label>
+          <mat-select formControlName="adminId" (selectionChange)="loadUserDetails()">
+            <mat-option *ngFor="let admin of admins" [value]="admin.id">{{ admin.id }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <button mat-button matStepperNext [disabled]="adminForm.invalid">Next</button>
+    </mat-step>
+  
+    <!-- Step 2: Edit Admin Details -->
+    <mat-step label="Edit Admin Details">
+      <form [formGroup]="userDetailsForm">
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email">
+        </mat-form-field>
+      </form>
+      <button mat-button matStepperNext [disabled]="userDetailsForm.invalid">Next</button>
+    </mat-step>
+  
+    <!-- Step 3: Save and Reset -->
+    <mat-step label="Save">
+      <button mat-raised-button color="primary" (click)="saveDetails()">Save</button>
+      <button mat-raised-button color="warn" (click)="resetDetails()">Reset</button>
+    </mat-step>
+  </mat-stepper>
+  

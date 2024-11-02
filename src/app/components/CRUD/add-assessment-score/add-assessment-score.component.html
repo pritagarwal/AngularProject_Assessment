@@ -1,0 +1,51 @@
+<mat-horizontal-stepper [linear]="false">
+    <!-- Step 1: Select Trainee -->
+    <mat-step label="Select Trainee ID">
+      <mat-form-field>
+        <mat-label>Select Trainee</mat-label>
+        <mat-select [(value)]="selectedTraineeId" (selectionChange)="onTraineeSelect($event.value)">
+          <mat-option *ngFor="let trainee of traineeList" [value]="trainee.id">
+            {{ trainee.name }} (ID: {{ trainee.id }})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext [disabled]="!selectedTraineeId">Next</button>
+      </div>
+    </mat-step>
+  
+    <!-- Step 2: Assessment Details -->
+    <mat-step label="Assessment Details" *ngIf="assessmentDetail">
+      <div *ngIf="assessmentDetail">
+        <p><strong>Assessment No:</strong> {{ assessmentDetail.assessmentNo }}</p>
+        <p><strong>Date:</strong> {{ assessmentDetail.assessmentDate | date }}</p>
+        <p><strong>Time:</strong> {{ assessmentDetail.assessmentTime }}</p>
+        <p><strong>Name:</strong> {{ assessmentDetail.name }}</p>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+        
+      </div>
+    </mat-step>
+  
+    <!-- Step 3: Enter Score -->
+    <mat-step label="Enter Score">
+      <mat-form-field>
+        <mat-label>Score (Out of 100)</mat-label>
+        <input matInput type="number" [(ngModel)]="score" max="100" min="0" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext [disabled]="score === null">Next</button>
+        
+      </div>
+    </mat-step>
+  
+    <!-- Step 4: Save and Reset -->
+    <mat-step label="Save">
+      <button mat-raised-button color="primary" (click)="saveScore()">Save</button>
+      <button mat-raised-button color="warn" (click)="resetForm()">Reset</button>
+    </mat-step>
+  </mat-horizontal-stepper>
+  

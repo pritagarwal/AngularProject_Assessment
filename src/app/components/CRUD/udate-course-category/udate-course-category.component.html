@@ -1,0 +1,36 @@
+
+<mat-stepper [linear]="isLinear" #stepper>
+
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Select Category ID</ng-template>
+            <mat-form-field>
+                <mat-label>Category ID</mat-label>
+                <mat-select formControlName="categoryId" (selectionChange)="onCategorySelect($event)">
+                    <mat-option *ngFor="let category of categories" [value]="category.id">
+                        {{ category.id }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+ 
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Update Category Name</ng-template>
+            <mat-form-field>
+                <mat-label>Category Name</mat-label>
+                <input matInput formControlName="categoryName" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button color="primary" (click)="onSave()">Save</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </form>
+    </mat-step>
+</mat-stepper>

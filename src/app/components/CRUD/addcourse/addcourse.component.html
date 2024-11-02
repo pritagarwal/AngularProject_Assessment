@@ -1,0 +1,70 @@
+<!-- <div class="container mt-4">
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <h3 class="mb-4">Add Course</h3>
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label for="cId">Course ID</label>
+                    <input id="cId" type="text" class="form-control"
+                        formControlName="cId" placeholder="Enter Course ID">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label for="cname">Name</label>
+                    <input id="cname" type="text" class="form-control"
+                        formControlName="cname" placeholder="Enter Course Name">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control"
+                        formControlName="description" placeholder="Enter Course Description"></textarea>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3">Add Course</button>
+    </form>
+</div> -->
+
+
+<mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Course ID and Name</ng-template>
+        <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Course Name" formControlName="cName" required>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Course Details">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>Details</mat-label>
+          <input matInput formControlName="cDescription" placeholder="Details"
+                 required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()" >Save</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>

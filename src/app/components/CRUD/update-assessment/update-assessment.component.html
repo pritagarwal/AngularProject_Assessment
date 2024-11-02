@@ -1,0 +1,74 @@
+<mat-stepper [linear]="isLinear" #stepper>
+  <!-- Step 1: Select Assessment ID -->
+  <mat-step [stepControl]="assessmentSelectForm">
+      <form [formGroup]="assessmentSelectForm">
+          <ng-template matStepLabel>Select Assessment ID</ng-template>
+          <mat-form-field>
+              <mat-label>Assessment ID</mat-label>
+              <mat-select formControlName="assessmentId" (selectionChange)="onAssessmentSelect($event.value)">
+                  <mat-option *ngFor="let assessment of assessments" [value]="assessment.id">
+                      {{ assessment.id }}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+          <div>
+              <button mat-button matStepperNext [disabled]="!assessmentSelectForm.valid">Next</button>
+          </div>
+      </form>
+  </mat-step>
+
+  <!-- Step 2: Edit Assessment Details -->
+  <mat-step [stepControl]="assessmentEditForm">
+      <form [formGroup]="assessmentEditForm">
+          <ng-template matStepLabel>Edit Assessment Details</ng-template>
+
+          <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" required>
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-label>Faculty ID</mat-label>
+              <input matInput type="number" formControlName="facultyId" required>
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-label>Marks</mat-label>
+              <input matInput type="number" formControlName="marks" required>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field>
+              <mat-label>Price</mat-label>
+              <input matInput type="number" formControlName="price" required>
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-label>Date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="assessmentDate" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+              <mat-label>Time</mat-label>
+              <input matInput formControlName="assessmentTime" placeholder="HH:MM AM/PM" required>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field>
+            <mat-label>Is Active</mat-label>
+            <mat-select formControlName="isActive">
+                <mat-option [value]="true">True</mat-option>
+                <mat-option [value]="false">False</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+          <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="onSave()">Save</button>
+              <button mat-button (click)="onReset()">Reset</button>
+          </div>
+      </form>
+  </mat-step>
+</mat-stepper>

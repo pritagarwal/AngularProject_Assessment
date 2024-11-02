@@ -1,0 +1,55 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <!-- Step 1: Select Faculty ID -->
+    <mat-step [stepControl]="facultySelectFormGroup">
+      <form [formGroup]="facultySelectFormGroup">
+        <ng-template matStepLabel>Select Faculty ID</ng-template>
+  
+        <mat-form-field>
+          <mat-label>Select Faculty ID</mat-label>
+          <mat-select formControlName="facultyId" (selectionChange)="onFacultySelect($event.value)">
+            <mat-option *ngFor="let faculty of facultyList" [value]="faculty.id">
+              {{ faculty.id }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <div>
+          <button mat-button matStepperNext [disabled]="!facultySelectFormGroup.valid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+  
+    <!-- Step 2: Edit Faculty Details -->
+    <mat-step [stepControl]="facultyEditFormGroup">
+      <form [formGroup]="facultyEditFormGroup">
+        <ng-template matStepLabel>Edit Faculty Details</ng-template>
+  
+        <mat-form-field>
+          <mat-label>Faculty Name</mat-label>
+          <input matInput formControlName="name" placeholder="Enter Name" required />
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>User ID</mat-label>
+          <input matInput formControlName="userId" type="number" placeholder="Enter User ID" required />
+        </mat-form-field>
+  
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext [disabled]="!facultyEditFormGroup.valid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+  
+    <!-- Step 3: Save and Reset Buttons -->
+    <mat-step>
+      <ng-template matStepLabel>Save Faculty</ng-template>
+      <p>Review and save the updated faculty information.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSave()">Save</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+  

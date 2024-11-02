@@ -1,0 +1,11 @@
+.homeMessage{
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;     /* Vertically center */
+}
+
+.message{
+    margin-left: 600px;
+    margin-top: 10px;
+    color: purple;
+}

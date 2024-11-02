@@ -1,0 +1,46 @@
+<mat-stepper [linear]="false">
+    <!-- Step 1: Select User by ID -->
+    <mat-step label="Select User">
+      <form [formGroup]="userForm">
+        <mat-form-field>
+          <mat-label>Select User ID</mat-label>
+          <mat-select formControlName="userId" (selectionChange)="loadUserDetails()">
+            <mat-option *ngFor="let user of users" [value]="user.id">{{ user.id }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <button mat-button matStepperNext [disabled]="userForm.invalid">Next</button>
+    </mat-step>
+  
+    <!-- Step 2: View and Edit User Details -->
+    <mat-step label="Edit User Details">
+      <form [formGroup]="userDetailsForm">
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option [value]="AdminRole">Admin</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <button mat-button matStepperNext [disabled]="userDetailsForm.invalid">Next</button>
+    </mat-step>
+  
+    <!-- Step 3: Save and Reset -->
+    <mat-step label="Save">
+      <button mat-raised-button color="primary" (click)="saveDetails()">Save</button>
+      <button mat-raised-button color="warn" (click)="resetDetails()">Reset</button>
+    </mat-step>
+  </mat-stepper>
+  

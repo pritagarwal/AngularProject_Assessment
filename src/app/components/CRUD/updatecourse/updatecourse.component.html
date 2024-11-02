@@ -1,0 +1,49 @@
+<mat-stepper [linear]="isLinear" #stepper>
+    <!-- Step 1: Select Course ID -->
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Select Course ID</ng-template>
+            <mat-form-field>
+                <mat-label>Course ID</mat-label>
+                <mat-select formControlName="cId" (selectionChange)="onCourseSelect($event)">
+                    <mat-option *ngFor="let course of arrCourse" [value]="course.id">
+                        {{ course.id }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext [disabled]="!firstFormGroup.valid">Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <!-- Step 2: Edit Course Details -->
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Update Course Details</ng-template>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="cName" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="cDescription" required></textarea>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <!-- Step 3: Confirm Update -->
+    <mat-step>
+        <ng-template matStepLabel>Save Changes</ng-template>
+        <p>Click Save to apply the updates.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="onUpdate()" color="primary">Save</button>
+        </div>
+    </mat-step>
+</mat-stepper>
